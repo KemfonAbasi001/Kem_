@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ─── Base / Reset ─────────────────────────────────────────── */
+body {
+  background-color: black;
+  color: white;
+  font-family: "Geist", sans-serif;
+}
+
+@theme {
+  --font-fira: "Fira Code", monospace;;
+  --font-goggle: "Google Sans", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 2px;
+}
+
+
+
+  
+
+/* h1 { letter-spacing: -0.02em; }
+h2, h3 { margin: 0; }
+p  { margin: 0; padding: 0; line-height: 25px; }
+span { margin: 0; padding: 0; }
+a  { text-decoration: none; }
+ul, li { margin: 0; padding: 0; }
+li { list-style: none; }
+button { font-family: "Geist", sans-serif; cursor: pointer; }
+
+
+#none::before {
+  content: '';
+  display: flex;
+  width: 2rem;
+  height: 1px;
+  background: #A1A1A1;
+  flex-shrink: 0;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
+} */
+
+
