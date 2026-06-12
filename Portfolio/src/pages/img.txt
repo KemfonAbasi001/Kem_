@@ -333,3 +333,168 @@ function Footer() {
 }
 
 export default Footer
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container */
+.intro {
+    background-color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-family: "Cookie", cursive;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    transform: translateY(0);
+    transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.intro.intro--slide-up {
+    transform: translateY(-100%);
+}
+
+/* Inner wrapper */
+.intro__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+    height: fit-content;
+}
+
+/* Title row */
+.intro__title {
+    width: 100%;
+    bottom: -130px;
+    position: relative;
+    animation: intro-rise 1s linear 1.2s forwards;
+}
+
+.intro__title span {
+    font-size: 3.4rem;
+    letter-spacing: 3px;
+    color: white;
+    font-weight: 500;
+}
+
+/* Letter-spacing helper for 'e' and 'o' */
+.intro__title .intro__letter--spaced {
+    margin-right: 10px;
+}
+
+/* Blur animation variants */
+.intro__letter--blur {
+    filter: blur(0px);
+    position: relative;
+    animation: intro-unblur 3.8s ease-in-out forwards;
+}
+
+.intro__letter--unblur {
+    filter: blur(0px);
+    position: relative;
+    animation: intro-unblur-alt 4.2s ease-in-out forwards;
+}
+
+.intro__letter--last {
+    filter: blur(0px);
+    position: relative;
+    animation: intro-unblur-last 4.4s ease-in-out forwards;
+}
+
+/* Horizontal rule */
+.intro__rule {
+    width: 100%;
+    border-radius: 50%;
+    margin: 0;
+    position: relative;
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: intro-expand 2s ease-in-out forwards;
+}
+
+/* Keyframes */
+@keyframes intro-rise {
+    from { bottom: -130px; }
+    to   { bottom: 0px; }
+}
+
+@keyframes intro-unblur {
+    from { filter: blur(5px); }
+    to   { filter: blur(0px); }
+}
+
+@keyframes intro-unblur-alt {
+    from { filter: blur(5px); }
+    to   { filter: blur(0px); }
+}
+
+@keyframes intro-unblur-last {
+    from { filter: blur(5px); }
+    to   { filter: blur(0px); }
+}
+
+@keyframes intro-expand {
+    from {
+        transform: scaleX(0);
+        filter: blur(1.5px);
+    }
+    to {
+        transform: scaleX(1);
+        filter: blur(0px);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="intro">
+        <div class="intro__wrapper">
+
+            <div class="intro__title">
+                <span class="intro__letter--unblur">W</span><span class="intro__letter--blur">e</span><span class="intro__letter--unblur">l</span><span class="intro__letter--blur">c</span><span class="intro__letter--unblur">o</span><span class="intro__letter--blur">m</span><span class="intro__letter--unblur intro__letter--spaced">e</span>
+                <span class="intro__letter--blur">t</span><span class="intro__letter--unblur intro__letter--spaced">o</span>
+                <span class="intro__letter--blur">m</span><span class="intro__letter--unblur">y</span><br>
+                <span class="intro__letter--blur">Portfolio W</span><span class="intro__letter--last">ebsite</span>
+            </div>
+
+            <hr class="intro__rule"/>
+
+        </div>
+    </section>

@@ -26,11 +26,35 @@ body {
   --font-fira: "Fira Code", monospace;
   --font-goggle: "Google Sans", sans-serif;
   --breakpoint-md: 800px;
+
 }
+
+/* ============================================================
+   ADD THIS BLOCK TO YOUR index.css
+   (These animations cannot be done with Tailwind utility classes)
+============================================================ */
+
+/* ---------- INTRO SLIDE-UP TRANSITION ---------- */
+
+
+
+/* ---------- LIGHT MODE OVERRIDES ---------- */
+/* body.light-mode .intro {
+  background-color: white;
+}
+
+body.light-mode .intro__title span {
+  color: black;
+}
+
+body.light-mode .intro__rule {
+  border-color: black;
+}
+
 
 body::-webkit-scrollbar {
   width: 2px;
-}
+} */
 
 
 h2{

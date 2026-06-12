@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Animation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; }
+        body { margin: 0; padding: 0; background-color: #080808; }
+
+        span { margin: 0; padding: 0; }
+
+        /* ============================================================
+           INTRO ANIMATION
+        ============================================================ */
+
+        .intro {
+            background-color: black;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Cookie', cursive;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            transform: translateY(0);
+            transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .intro.intro--slide-up {
+            transform: translateY(-100%);
+        }
+
+        /* Inner wrapper */
+        .intro__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            overflow: hidden;
+            height: fit-content;
+        }
+
+        /* Title row */
+        .intro__title {
+            width: 100%;
+            bottom: -130px;
+            position: relative;
+            animation: intro-rise 1s linear 1.2s forwards;
+        }
+
+        .intro__title span {
+            font-size: 3.4rem;
+            letter-spacing: 3px;
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Letter-spacing helper for 'e' and 'o' */
+        .intro__title .intro__letter--spaced {
+            margin-right: 10px;
+        }
+
+        /* Blur animation variants */
+        .intro__letter--blur {
+            filter: blur(0px);
+            position: relative;
+            animation: intro-unblur 3.8s ease-in-out forwards;
+        }
+
+        .intro__letter--unblur {
+            filter: blur(0px);
+            position: relative;
+            animation: intro-unblur-alt 4.2s ease-in-out forwards;
+        }
+
+        .intro__letter--last {
+            filter: blur(0px);
+            position: relative;
+            animation: intro-unblur-last 4.4s ease-in-out forwards;
+        }
+
+        /* Horizontal rule */
+        .intro__rule {
+            width: 100%;
+            border-radius: 50%;
+            margin: 0;
+            position: relative;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: intro-expand 2s ease-in-out forwards;
+        }
+
+        /* Keyframes */
+        @keyframes intro-rise {
+            from { bottom: -130px; }
+            to   { bottom: 0px; }
+        }
+
+        @keyframes intro-unblur {
+            from { filter: blur(5px); }
+            to   { filter: blur(0px); }
+        }
+
+        @keyframes intro-unblur-alt {
+            from { filter: blur(5px); }
+            to   { filter: blur(0px); }
+        }
+
+        @keyframes intro-unblur-last {
+            from { filter: blur(5px); }
+            to   { filter: blur(0px); }
+        }
+
+        @keyframes intro-expand {
+            from {
+                transform: scaleX(0);
+                filter: blur(1.5px);
+            }
+            to {
+                transform: scaleX(1);
+                filter: blur(0px);
+            }
+        }
+
+        /* ── Demo: content that appears after intro slides away ── */
+        .demo-content {
+            opacity: 0;
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+            background: #080808;
+        }
+
+        .demo-content--visible {
+            opacity: 1;
+        }
+
+        /* ── Responsive ── */
+        @media screen and (max-width: 900px) {
+            .intro__title span {
+                font-size: 2.59rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         INTRO ANIMATION
+    ============================================================ -->
+    <section class="intro">
+        <div class="intro__wrapper">
+
+            <div class="intro__title">
+                <span class="intro__letter--unblur">W</span><span class="intro__letter--blur">e</span><span class="intro__letter--unblur">l</span><span class="intro__letter--blur">c</span><span class="intro__letter--unblur">o</span><span class="intro__letter--blur">m</span><span class="intro__letter--unblur intro__letter--spaced">e</span>
+                <span class="intro__letter--blur">t</span><span class="intro__letter--unblur intro__letter--spaced">o</span>
+                <span class="intro__letter--blur">m</span><span class="intro__letter--unblur">y</span><br>
+                <span class="intro__letter--blur">Portfolio W</span><span class="intro__letter--last">ebsite</span>
+            </div>
+
+            <hr class="intro__rule"/>
+
+        </div>
+    </section>
+
+    <!-- Page content revealed after intro -->
+    <div class="demo-content" id="demo-content">
+        Your main content goes here.
+    </div>
+
+
+    <!-- ============================================================
+         INTRO ANIMATION JS
+    ============================================================ -->
+    <script>
+        const introEl     = document.querySelector('.intro');
+        const demoContent = document.getElementById('demo-content');
+
+        // Duration matches the longest animation (4.4s blur + buffer)
+        const INTRO_DURATION = 3090;
+
+        setTimeout(function () {
+            introEl.classList.add('intro--slide-up');
+        }, INTRO_DURATION);
+
+        introEl.addEventListener('transitionend', function (e) {
+            if (e.propertyName === 'transform') {
+                introEl.style.display = 'none';
+                demoContent.classList.add('demo-content--visible');
+            }
+        });
+    </script>
+
+</body>
+</html>
